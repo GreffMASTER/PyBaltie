@@ -1,0 +1,63 @@
+# BPR Format #
+SGP Baltie Code file
+
+# Header #
+
+0x00-02 - BPR magic
+0x03 - version(?)
+0x04-05 - how many blocks
+
+# The Code #
+
+-= Instruction Blocks =-
+Each block is 2 bytes long (usually ?? 8A).
+After each block, there are 2 bytes that represent [still unclear] (for instructions it's usually 01 00)
+
+eg. the "Walk Forwad" block looks like this:
+AD 8A 01 00 - id of the walk command is AD
+
+-= Scene Blocks =-
+A scene block will appear infornt of the character. It's stored in 2 bytes. Much like the istruction block, it has another 2 bytes after itself. (usually 00 00)
+
+eg. to place a yellow flower, the block will look like this:
+09 00 00 00 - id of the flower is 9
+
+
+The pattern code looks something like this:
+
+command|01 00|command|01 00|scene_block|00 00|[...]|block|01 00
+
+# Program Blocks #
+
+DA 8A - Empty space
+AD 8A - Walk
+AE 8A - Turn left
+AF 8A - Turn right
+B0 8A - Make Baltie invisible
+B1 8A - Make Baltie visible
+B2 8A - Wait 0.1 sec
+B3 8A - Wait for any input
+E0 8A - Disable cloud
+E1 8A - Enable cloud
+B4 8A - Clear/Load scene
+B5 8A - Play a sound
+D0 8A - Face right
+D1 8A - Face down
+D2 8A - Face left
+D3 8A - Face up
+CF 8A - Comment
+97 8A - Set speed
+9D 8A - Number 0
+9E 8A - Number 1
+9F 8A - Number 2
+A0 8A - Number 3
+A1 8A - Number 4
+A2 8A - Number 5
+A3 8A - Number 6
+A4 8A - Number 7
+A5 8A - Number 8
+A6 8A - Number 9
+CC 8A - Times [x]
+CD 8A - Open bracket [(]
+CE 8A - Close bracket [)]
+DB 8A - Next line

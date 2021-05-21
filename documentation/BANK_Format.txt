@@ -1,0 +1,63 @@
+# B** Format #
+SGP Baltie Bank file
+
+The entire bank contains 150 tiles. 15 columns and 10 rows.
+The tile has dimensions 39x29 pixels.
+The entire bank has dimensions 585x290.
+
+# Header #
+
+0x00-03 - BANK magic
+0x04-30x07 - 2A 00 00 00 3F 00 00 2A 2A 00 15 2A 00 00 2A 2A 15 2A 2A 2A 15 15 15 00 3F 00 00 3F 3F 2A 15 3F 3F 15 15 3F 2A 00 3F 3F 00 3F 3F 3F 26 01 1C 09
+
+# The Bank #
+
+The tile starts with a single byte. It represents the transparent color.
+
+FF - no transparency
+00 - black
+01 - dark green
+02 - blue
+03 - dark blue
+04 - magenta
+05 - red
+06 - womit
+07 - light gray
+08 - gray
+09 - green
+0A - cyan
+0B - purple
+0C - light red
+0D - orange
+0E - yellow
+0F - white
+
+Each tile is 580 bytes long. (without the transparent color byte)
+The pattern looks like it uses 5 bytes
+The tile data is divided by horizontal lines
+Each line is made out of 4 chunks (5 bytes each)
+Essentially, one line is 20 bytes long
+
+full color
+0 0 0 0 - black
+0 0 0 F - dark green
+0 0 F 0 - blue
+0 0 F F - dark blue
+0 F 0 0 - magenta
+0 F 0 F - red
+0 F F 0 - womit
+0 F F F - light gray
+F 0 0 0 - gray
+F 0 0 F - green
+F 0 F 0 - cyan
+F 0 F F - purple
+F F 0 0 - light red
+F F 0 F - orange
+F F F 0 - yellow
+F F F F - white
+
+Each tile is seperated with this set of bytes: D8 D3 26 01 1C - Ascii:ŘÓ&
+
+580/5=116/4=29
+
+
