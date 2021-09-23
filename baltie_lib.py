@@ -1,6 +1,3 @@
-from typing import DefaultDict
-
-
 def getInstruction(x,y):
     if y == 138:
         return {
@@ -36,7 +33,6 @@ def getInstruction(x,y):
             219: "Next Line",
             224: "Disable Cloud",
             225: "Enable Cloud",
-            DefaultDict: "Unknown Block"
         }[x]
     else:
         return "Place "+str(x)
