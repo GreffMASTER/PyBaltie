@@ -24,7 +24,7 @@ def LoadBPRFile(bprfile):
             return 2
 
     if file.read(1) == b'':
-        return prog
+        return {"blockcount":bcnt,"program":prog}
     else:
         return 2
     
