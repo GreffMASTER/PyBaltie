@@ -3,9 +3,9 @@ SGP Baltie Code file
 
 # Header #
 
-0x00-02 - BPR magic
+0x00-0x02 - BPR magic
 0x03 - version(?)
-0x04-05 - how many blocks
+0x04-0x05 - how many blocks
 
 # The Code #
 
