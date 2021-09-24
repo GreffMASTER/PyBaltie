@@ -11,7 +11,7 @@ The header is 6 bytes long.
 
 ##### eg. Header:
 `42 50 52 01 08 00`  
-`  BPR    V  8 Blocks`  
+BPR File, Version 1, 8 Blocks of code
 
 ### The Code
 
@@ -27,7 +27,7 @@ All instruction tiles are in bank 101 (from the .C** file).
 (The tile number cannot be greater than 150!)
 
 #### -= Scene Blocks =-
-A scene block will appear infornt of the character.  
+A scene block will appear infront of the character.  
 Just like instruction blocks, it's stored in 4 bytes. It represents tile and it's corresponding bank.
 
 ##### eg. To place a tile with a letter "B", the block will look like this:
@@ -39,7 +39,7 @@ If the decimal value is lower than 1000, it uses tiles from bank 0.
 (The tile number cannot be greater than 150!)
 
 ##### Example code:
-`A4 8A 01 00 CC 8A 01 00 AD 8A 01 00 D1 8A 01 00 9F 8A 01 00 9D 8A 01 00 CC 8A 01 00 B2 8A 01 00`  
+`A4 8A 01 00` `CC 8A 01 00` `AD 8A 01 00` `D1 8A 01 00` `9F 8A 01 00` `9D 8A 01 00` `CC 8A 01 00` `B2 8A 01 00`  
 Which translates to:  
 ` Number 7,   Times [x],     Walk,    Face down,  Number 2,   Number 0,   Times [x], Wait 0.1 sec`
 
