@@ -24,6 +24,6 @@ else:
     for i in range(program["blockcount"]):
         #print(int.from_bytes(program["program"][i][:1], byteorder='big'),int.from_bytes(program["program"][i][1:2], byteorder='big'),int.from_bytes(program["program"][i][2:3], byteorder='big'),int.from_bytes(program["program"][i][3:4], byteorder='big'))
         try:
-            print(str(i+1)+".",baltie_lib.getInstruction(int.from_bytes(program["program"][i][:1], byteorder='big'),int.from_bytes(program["program"][i][1:2], byteorder='big')))
+            print(str(i+1)+".",baltie_lib.getInstruction(int.from_bytes(program["program"][i], byteorder='little')))
         except KeyError:
             print(str(i+1)+".","Unknown")
