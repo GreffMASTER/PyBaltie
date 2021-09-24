@@ -10,9 +10,8 @@ The header is 6 bytes long.
 0x04-0x05 - how many blocks``
 
 ##### eg. Header:
-``42 50 52|01|08 00
---------|--|-----
-   BPR  |V |8 Blocks``
+``42 50 52 01 08 00
+  BPR   V  8 Blocks``
 
 ### The Code
 
@@ -47,7 +46,7 @@ Which translates to:``
 
 ### Instruction Blocks
 
-``DA 8A 01 00 (101082) - Empty space
+DA 8A 01 00 (101082) - Empty space
 AD 8A 01 00 (101037) - Walk
 AE 8A 01 00 (101038) - Turn left
 AF 8A 01 00 (101039) - Turn right
@@ -78,4 +77,4 @@ A6 8A 01 00 (101030) - Number 9
 CC 8A 01 00 (101068) - Times [x]
 CD 8A 01 00 (101069) - Open bracket [(]
 CE 8A 01 00 (101070) - Close bracket [)]
-DB 8A 01 00 (101083) - Next line``
+DB 8A 01 00 (101083) - Next line
