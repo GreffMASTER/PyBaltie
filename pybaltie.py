@@ -1,7 +1,7 @@
 #import pygame
 import os
 import sys
-#import GMStuff
+import GMStuff
 from baltie_file_parser import LoadBPRFile, LoadBankFile
 import baltie_lib
 

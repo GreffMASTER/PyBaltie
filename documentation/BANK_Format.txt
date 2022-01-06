@@ -3,17 +3,21 @@ SGP Baltie Bank file
 
 The entire bank contains 150 tiles. 15 columns and 10 rows.
 The tile has dimensions 39x29 pixels.
-The entire bank has dimensions 585x290.
+The entire bank has dimensions 585x290 pixels.
+The tiles are stored from left to right, then it starts from next row.
 
 # Header #
 
 0x00-0x03 - BANK magic
 0x04-0x07 - ? (not yet discovered)
-0x08-0x36 - 2A 00 00 00 3F 00 00 2A 2A 00 15 2A 00 00 2A 2A 15 2A 2A 2A 15 15 15 00 3F 00 00 3F 3F 2A 15 3F 3F 15 15 3F 2A 00 3F 3F 00 3F 3F 3F 26 01 1C
+0x08-0x31 - 2A 00 00 00 3F 00 00 2A 2A 00 15 2A 00 00 2A 2A 15 2A 2A 2A 15 15 15 00 3F 00 00 3F 3F 2A 15 3F 3F 15 15 3F 2A 00 3F 3F 00 3F
+0x32-0x36 - 3F 3F 26 01 1C
 
 # The Bank #
 
-The tile starts with a single byte. It represents the transparent color.
+- tile header -
+The tile starts with 3 bytes (26 01 1C) im still not sure what they mean
+Next byte represents the transparent color.
 
 FF - no transparency
 00 - black
@@ -33,32 +37,40 @@ FF - no transparency
 0E - yellow
 0F - white
 
-Each tile is 580 bytes long. (without the transparent color byte)
-The pattern looks like it uses 5 bytes
-The tile data is divided by horizontal lines
+eg. 26 01 1C FF
+    ________ __
+     \_idk    \_Transparent color
+
+- tile data -
+
+Each tile data is 580 bytes long.
+The tile data is divided by 29 horizontal lines
 Each line is made out of 4 chunks (5 bytes each)
 Essentially, one line is 20 bytes long
 
-full color
-0 0 0 0 - black
-0 0 0 F - dark green
-0 0 F 0 - blue
-0 0 F F - dark blue
-0 F 0 0 - magenta
-0 F 0 F - red
-0 F F 0 - womit
-0 F F F - light gray
-F 0 0 0 - gray
-F 0 0 F - green
-F 0 F 0 - cyan
-F 0 F F - purple
-F F 0 0 - light red
-F F 0 F - orange
-F F F 0 - yellow
-F F F F - white
 
-Each tile is seperated with this set of bytes: D8 D3 26 01 1C 09 - Ascii:ŘÓ&	
+full line color
+0000000000 0000000000 0000000000 0000000000 - black
+0000000000 0000000000 0000000000 FFFFFFFFFE - dark green
+0000000000 0000000000 FFFFFFFFFE 0000000000 - blue
+0000000000 0000000000 FFFFFFFFFE FFFFFFFFFE - dark blue
+0000000000 FFFFFFFFFE 0000000000 0000000000 - magenta
+0000000000 FFFFFFFFFE 0000000000 FFFFFFFFFE - red
+0000000000 FFFFFFFFFE FFFFFFFFFE 0000000000 - womit
+0000000000 FFFFFFFFFE FFFFFFFFFE FFFFFFFFFE - light gray
+FFFFFFFFFE 0000000000 0000000000 0000000000 - gray
+FFFFFFFFFE 0000000000 0000000000 FFFFFFFFFE - green
+FFFFFFFFFE 0000000000 FFFFFFFFFE 0000000000 - cyan
+FFFFFFFFFE 0000000000 FFFFFFFFFE FFFFFFFFFE - purple
+FFFFFFFFFE FFFFFFFFFE 0000000000 0000000000 - light red
+FFFFFFFFFE FFFFFFFFFE 0000000000 FFFFFFFFFE - orange
+FFFFFFFFFE FFFFFFFFFE FFFFFFFFFE 0000000000 - yellow
+FFFFFFFFFE FFFFFFFFFE FFFFFFFFFE FFFFFFFFFE - white
 
-580/5=116/4=29
+Each tile ends with 2 bytes (D8 D3)
+         ________ __
+full eg. 26 01 1C FF ...
+(580 bytes of tiledata)
+... D8 D3
 
 
