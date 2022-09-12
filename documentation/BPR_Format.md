@@ -1,42 +1,50 @@
 # BPR Format
 ## SGP Baltie Code file
 
+The Baltie Program file contains instructions that are meant to be performed at runtime.
+The file is little endian.
+
 ### Header
 
 The header is 6 bytes long.
 
 `0x00-0x02 - BPR magic`  
-`0x03 - version(?)`  
-`0x04-0x05 - how many blocks`  
+`u8 - format version`  
+`u16 - block count`  
 
-##### eg. Header:
+Baltie 2.0 uses format version 1.
+
+##### Example header:
 `42 50 52 01 08 00`  
 BPR File, Version 1, 8 Blocks of code
 
-### The Code
+### The Instructions
+
+Right after the header, the actual instruction data is stored.  
+`u32 block[block count]`  
+The pattern repeates until the end of the file.
 
 #### -= Instruction Blocks =-
 Each block is 4 bytes long. It represents instruction and it's corresponding bank.
 
-##### eg. The "Walk Forwad" block looks like this:
+##### Example, the "Walk Forwad" block looks like this:
 `AD 8A 01 00`  
-These bytes (in little endian) equals 101037 in decimal.  
+These bytes equals 101037 in decimal.  
 The last 3 digits represent the tile number (in this case it's 037).
 The rest represent the bank number (in this case it's 101).  
 All instruction tiles are in bank 101 (from the .C** file).
-(The tile number cannot be greater than 150!)
+(Each bank can store up to 150 tiles, so the tile number cannot be greater than 150!)
 
 #### -= Scene Blocks =-
 A scene block will appear infront of the character.  
 Just like instruction blocks, it's stored in 4 bytes. It represents tile and it's corresponding bank.
 
-##### eg. To place a tile with a letter "B", the block will look like this:
+##### Example, to place a tile with a letter "B", the block will look like this:
 `55 04 00 00`  
-These bytes (in little endian) equals 1109 in decimal.  
+These bytes equals 1109 in decimal.  
 The last 3 digits represent the tile number (in this case it's 109).
 The rest represent the bank number (in this case it's 1).  
 If the decimal value is lower than 1000, it uses tiles from bank 0.
-(The tile number cannot be greater than 150!)
 
 ##### Example code:
 `A4 8A 01 00` `CC 8A 01 00` `AD 8A 01 00` `D1 8A 01 00` `9F 8A 01 00` `9D 8A 01 00` `CC 8A 01 00` `B2 8A 01 00`  
@@ -77,3 +85,6 @@ Which translates to:
 - `CD 8A 01 00 (101069)` - Open bracket [(]
 - `CE 8A 01 00 (101070)` - Close bracket [)]
 - `DB 8A 01 00 (101083)` - Next line
+
+### Pattern file
+You can find the ImHex pattern file in this repository (or by just clicking [here](https://github.com/GreffMASTER/PyBaltie/blob/main/documentation/BPR.hexpat)).

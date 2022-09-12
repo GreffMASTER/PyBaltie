@@ -2,18 +2,18 @@
 
 #pragma endian little
 
-struct header{
-	char FileMagic[3];	// BPR Magic
-	u8 Version;			// Version (?)
-	u16 TileCount;		// Amount of prgram blocks
+struct Header{
+	char file_magic[3];	// BPR Magic
+	u8 version;			// Version (?)
+	u16 tile_count;		// Amount of prgram blocks
 };
 
-struct tile{			// Put it in a struct to have colorfull overlay
-	u32 TileData;		// Tile data (last 3 digits is tile number, rest is bank number)
+struct Tile{			// Put it in a struct to have colorfull overlay
+	u32 tile_data;		// Tile data (last 3 digits is tile number, rest is bank number)
 };
 
 // START
 
-header Header @ 0x0;
-tile Tiles[Header.TileCount] @ 0x06;
+Header header @ 0x0;
+Tile tiles[header.tile_count] @ 0x06;
 
