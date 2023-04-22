@@ -48,6 +48,9 @@ The tile data is divided by 29 horizontal lines
 Each line is made out of 4 chunks (5 bytes each)
 Essentially, one line is 20 bytes long
 
+Each chunk is a bitmask for the 4 bit color index.
+Chunks use 39 bits. (last bit is unused)
+By applying the nth bit from each chunk to a 4 bit value, we will get the color index for the nth pixel.
 
 full line color
 0000000000 0000000000 0000000000 0000000000 - black
