@@ -10,8 +10,8 @@ The tiles are stored from left to right, then it starts from next row.
 
 0x00-0x03 - BANK magic
 0x04-0x07 - ? (not yet discovered)
-0x08-0x31 - 2A 00 00 00 3F 00 00 2A 2A 00 15 2A 00 00 2A 2A 15 2A 2A 2A 15 15 15 00 3F 00 00 3F 3F 2A 15 3F 3F 15 15 3F 2A 00 3F 3F 00 3F
-0x32-0x36 - 3F 3F 26 01 1C
+0x08-0x33 - 2A 00 00 00 3F 00 00 2A 2A 00 15 2A 00 00 2A 2A 15 2A 2A 2A 15 15 15 00 3F 00 00 3F 3F 2A 15 3F 3F 15 15 3F 2A 00 3F 3F 00 3F 3F 3F
+(Perhaphs time_t timestamps?)
 
 # The Bank #
 
